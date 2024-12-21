@@ -1,0 +1,19 @@
+{% extends "layout.html" %}      <!-- It is use for reduce the code Write once and use many time -->
+<!--Extract html code from layout.html as usal -->
+
+{% block content%} <!--It is use add Extra content with layout.html code-->
+
+<h3>Contents:- </h3>
+<ul>
+    <li>Home</li>
+    <li><a href="{{ url_for('about')}}" , target="_blank">About</a></li> <!--By click the About open "about.html" webpage-->
+    <!-- Here we use target="_blank" bcz we want to open About page in new tab -->
+
+    <li><a href="{{ url_for('employees')}}" , target="_blank"> employees </a>
+        <ul>
+            <li><a href="{{ url_for('managers')}}" , target = "_blank">Managers</a></li>
+        </ul>
+    </li>
+    <li>contact</li>
+</ul>
+{% endblock content%}

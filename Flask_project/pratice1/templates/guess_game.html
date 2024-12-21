@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+
+{% block content%}
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Guess the Number Game</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+          background-color: #f4f4f9;
+          color: #333;
+          margin: 0;
+          padding: 0;
+        }
+
+        header {
+          background-color: #6200ea;
+          color: #fff;
+          padding: 1rem 0;
+          font-size: 1.5rem;
+        }
+
+        main {
+          margin: 2rem;
+        }
+
+        .container {
+          display: inline-block;
+          background-color: #fff;
+          padding: 2rem;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+        }
+
+        input[type="number"] {
+          padding: 0.5rem;
+          font-size: 1rem;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+        }
+
+        button {
+          background-color: #6200ea;
+          color: white;
+          border: none;
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+          cursor: pointer;
+          border-radius: 4px;
+          margin-top: 1rem;
+        }
+
+        button:hover {
+          background-color: #4500a8;
+        }
+
+        #message {
+          margin-top: 1rem;
+          font-size: 1.2rem;
+          font-weight: bold;
+        }
+
+        footer {
+          margin-top: 2rem;
+          font-size: 0.9rem;
+          color: #666;
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        Guess the Number Game
+      </header>
+      <main>
+        <div class="container">
+          <p>I'm thinking of a number between 1 and 100. Can you guess what it is?</p>
+          <input type="number" id="userGuess" placeholder="Enter your guess" min="1" max="100">
+          <button onclick="checkGuess()">Submit Guess</button>
+          <p id="message"></p>
+        </div>
+      </main>
+      <footer>
+        Made with ❤️ by Code Communicators
+      </footer>
+      <script>
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+          const userGuess = document.getElementById("userGuess").value;
+          const message = document.getElementById("message");
+          attempts++;
+
+          if (!userGuess) {
+            message.textContent = "Please enter a number!";
+            return;
+          }
+
+          const guess = Number(userGuess);
+
+          if (guess < randomNumber) {
+            message.textContent = "Too low! Try again.";
+            message.style.color = "orange";
+          } else if (guess > randomNumber) {
+            message.textContent = "Too high! Try again.";
+            message.style.color = "orange";
+          } else {
+            message.textContent = `Congratulations! You guessed it in ${attempts} tries! 🎉`;
+            message.style.color = "green";
+            document.getElementById("userGuess").disabled = true;
+          }
+        }
+      </script>
+    </body>
+    </html>
+
+{% endblock content %}

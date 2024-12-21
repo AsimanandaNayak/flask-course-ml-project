@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h3>The input {{number}} is reafy for evaluate</h3>
+
+{% if number == 0 %}
+    <h4>Given input {{number}} is neither odd nor even... </h4>
+
+{% elif number % 2 == 0 %}
+    <h4>Given input {{number}} is Even !!!</h4>
+
+{% else %}
+    <h4>Given input {{number}} is Odd !!!</h4>
+{% endif %}
+
+
+{% endblock content %}

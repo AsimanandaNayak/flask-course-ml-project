@@ -1,0 +1,180 @@
+HTTP METHODS:-
+-------------
+-> POST ---> CREATE
+-> GET  ---> RETRIVE
+-> PUT  ---> UPDATE
+-> DELETE -> DELETE
+
+
+HTTP RESPONSE:-
+---------------
+-> 1XX - INFORMATIVE
+-> 2XX - SUCCESS
+-> 3XX - REDIRECTION
+-> 4XX - CLIENT-SIDE ERROR
+-> 5XX - SERVER-SIDE ERROR
+
+
+
+URL REDIRECT RESPONSE CODE
+--------------------------
+301 -> MOVED PARMANENTLY
+302 -> REDIRECTED TEMPORARLY
+303 -> REDIRECTED TEMPORARLY
+307 -> REDIRECTED TEMPORARLY
+308 -> REDIRECTED PERMANENTLY
+
+
+JINJA:-
+------
+> PARAMETERS AND PLACEHOLDERS --> {{ <variable> }}
+> If..ELSE -->  {% if number == 0%} --content-- {% endif %}
+> FOR LOOP --> {% for i in items %} --content-- {%endfor%}
+
+TEMPLATES INHERITANCE --> {% EXTENDS "PARENT.HTML" %}
+
+EXTRA CODE :- 
+-------------
+{% block content%}
+        <!--It is created for child html file will need to add some extra content-->
+{% endblock %}
+
+
+-- Session-4 --
+
+HTTP:-
+-------
+GET :- user-input act as filter for retrive the data from server.(Act as query parameter)
+
+PUT :- Here we store the user input in a database
+
+
+CSRF(Cross-Site Request Forgery):- It is a attack when some gives a link which move to an web application and our personal data will link .
+
+Atacker:-
+---------	 ------       -------	    ----------	Reqst	--------
+|  LINK | -----> |USER|  ---> |CLICK| ----> |WEB PAGE| <------> |SERVER|
+---------	 ------	      -------	    ----------  Respns  --------
+Tocken create:-  
+app.py file ---> app.config["SECRET_KEY"] = "this_is_a_secret_key" 
+login/signup.htmlfile --> {{ form.hidden_tag() }}
+
+
+-- 44:00 --
+
+PYTHON WT-FORM --> It easy to create any form application without using html,css & js
+
+--		pip install flask-wtf 		--
+--		pip install email-validator 	--
+
+
+
+SignUp:-			Login:-
+------				--------
+username			username
+email				password
+gender				remember_me
+password			submit			
+confirm_password
+submit
+
+
+		-- 		44:00           --
+
+
+SQL ALCHEMY (ORM):-
+---------------------
+IT IS USE LIKE USE OOP'S CONCEPT
+------ pip install flask-sqlalchemy ----
+
+
+
+SQLITE Database:-
+> Server-less , lightweight database engine
+> Written in C programming language
+> The database is stored as a file in the file system
+> Convenient for quick use & small scale storage purpose
+
+
+
+
+
+
+
+
+SESSION:-
+============
+A THING WHICH IS CHANGED IN A APPLICATION AFTER LOG-OUT FROM THAT APPLICATION THAT CHANGE REMAIN SAME .
+EX-
+> USER LOGIN STATUS
+> ITEMS IN ONLINE SHOPPING CART
+> WEBSITED FORNT SIZR / DARK MODE / BRIGHT MODE PREFERENCE
+
+
+WHEN WE WANT TO LOGIN THE HTTP REQUEST SEND TO SERVER FROM CLIENT .... AFTER CHECKING THE LOGIN REQUEST IS RIGHT OR NOT AFTER THAT THE SERVER GIVE ACCESS TO THE USER TO USE THE APPLICATION...BUT THE PROBLEM RAISED WHEN A USER CLOSE THE APPLICATION AND WHEN HE AGAIN WANT TO ACCESS THE APPLICATION HE CAN USE WITHOUT LOGIN AGAIN WHENEVER THE HTTP REQUEST IS A STATELESS PROTOCOL ... BUT IT STILL WORK BCZ THE SERVER SIDE CREATE A SESSION ID OF THAT USER WHO LOGIN AND THEY CAN USE WHENEVER THEY WANT WITHOUT LOGED OUT . IT IS THE CONCEPT OF SESSION.
+
+CLIENT SIDE SESSION:-
+---------------------
+WHEN A SERVER SEND SESSION-ID WITH SESSION DATA AS A COKKIES TO CLIENT(BROWSER) . IT IS KNOWN AS CLIENT-SIDE-SESSION.
+
+SERVER SESSION:-
+----------------
+WHEN ONLY THE SESSION-ID IS SENT TO THE CLIENT(BROWSER). IT IS KNOWN AS SERVER SESSION.
+
+
+BY-DEFAULT FLASH IS A CLIENT-SIDE SESSION. BUT USING SOME LIBRARIES WE CAN CONVERT TO SERVER SESSION.
+
+MEASURES TO ENHANCE SECURITY AND INTEGRITY OF SESSION DATA GERTTING STORED:-
+-------------------------------------------------------------------------
+1.Session ID:-
+--------------
+> the session id should be long and randomly generated
+> the session id should be changed periodically during session
+> the session id shouldn't be exposed as part of any URL.
+
+2.Secure Cookies:-
+------------------
+syntax to create cokkie:- Set-Cookie:sessionId=abc123;HttpOnly;Secure;SameSite=Strict
+
+> Set the flags HttpOnly and Secute and the attribute samesite while setting cookies over HTTP
+> HttpOnly events client-side scripts(Java Script) from accessing browser cookies,thus preventing XSS (cross-site scripting) attacks
+> Secure ensure that cookies are sent over the HTTPSdomain , preventing interception over unsecured connections
+> SameSite helps prevent chances of CSRF attacks.
+
+
+FOR USE SERVER_SESSION we need to install:-
+pip install Flask-Session
+
+
+
+-> When we use CLIENT_SESSION, the cookie we receive contains both the session ID and all the associated information, such as the username and password. If we decode this cookie using Base64, we can retrieve all the information.
+
+-> However, when we use SERVER_SESSION, the cookie we receive contains only the session ID. If we decode this cookie using Base64, we will only get the session ID, not the additional information.
+
+SO THE SERVER_SESSION IS MORE SECURE THAN CLIENT_SESSION.
+
+
+COOKIES:-
+--------
+> A COOKIE, TECHNICALLY KNOEN AS HTTP COOKIE , IS A SMALL PIECE OF DATA THAT'S STORED WITHIN THE BROWSER WHERE THE END USER IS INTERACTING WITH THE WEB APPLICATION.
+> main purpose of a cookie is to 'remember' the preferences of the user over a session . This helps provide the users a more personalized experience.
+
+Why cookies ?
+-------------
+> Maintain login status
+> Shopping carts in online retail stores
+> Store user language , theme , appearance , custom setting and preferences
+> Save website traffic for analytics
+> Reduce CSRF/XSS attacks
+
+
+SERVER_side header is "SetCookie.(Server --> Client)
+Client_side header is "Cookie".( Client --> Server )
+
+------------ session7 29:00 ------
+
+Types of Cookies:-
+------------------
+1-ST TYPE COOKIES:- When own server give the data to browser that type data are called 1-st type cookie.
+ 
+3-RD TYPE COOKIES:- When a browser open and own server give response with another server gives cookies .... that other server's cookies in known as 3-rd type cookie.

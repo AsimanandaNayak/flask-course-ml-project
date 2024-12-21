@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content%}
+  <h3>Extra Part</h3>
+
+  {% for id , emp_data in emps.items()%}
+      <div>
+        <table>
+          <tr>
+            <td>Id: </td>
+            <td>{{ id }}</td>
+          </tr>
+          <tr>
+            <td>Name: </td>
+            <td>{{ emp_data["name"] }}</td>
+          </tr>
+          <tr>
+            <td>Age: </td>
+            <td>{{ emp_data["age"] }}</td>
+          </tr>
+          <tr>
+            <td>Position: </td>
+            <td>{{ emp_data["position"] }}</td>
+          </tr>
+        </table>
+      </div>
+      <br>
+  {% endfor %}
+{% endblock content%}

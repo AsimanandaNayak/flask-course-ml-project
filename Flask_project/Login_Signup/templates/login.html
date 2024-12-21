@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <form method="post">
+        {{form.hidden_tag()}}
+        <div>
+            {{form.email.label}}
+            {{form.email}}
+        </div>
+        <br>
+
+        <div>
+            {{form.password.label}}
+            {{form.password}}
+        </div>
+        <br>
+
+        <div>
+            <p>not Registerd ? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+            <p>Redirect to Homepage? <a href="{{ url_for('home' }}">Home</a></p>
+        </div>
+
+        <div>{{form.submit()}}</div>
+
+    </form>
+{% endblock content %}
